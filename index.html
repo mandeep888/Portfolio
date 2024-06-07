@@ -47,7 +47,7 @@
 
     <div class="content">
     <h2>Hi There,<br/> I'm Mandeep Singh  <span>Jass</span></h2>
-    <p>i am into <span class="typing-text">Full Stack Development</span></p>
+    <p>i am into <span class="typing-text">Full stack Web Development</span></p>
     <a href="#about" class="btn"><span>About Me</span>
       <i class="fas fa-arrow-circle-down"></i>
     </a>
@@ -266,7 +266,7 @@
       <div class="image-box">
         <img draggable="false" src="./assets/images/contact1.png" alt="">
       </div>
-    <form id="contact-form">
+    <form id="contact-form" name="contact-form" method="post" action="https://script.google.com/macros/s/AKfycbynDTe6hVJBmUpU-Bb6eGk8mXY0TDyUkagxmJ4Le65UD5q7bsNkDspBz0GwULhHtxfn/exec">
       
       <div class="form-group">
         <div class="field">
@@ -287,15 +287,13 @@
         </div>
         </div>
       <div class="button-area">
-        <button type="submit">
-          Submit <i class="fa fa-paper-plane"></i></button>
+        <button type="submit">Submit <i class="fa fa-paper-plane"></i></button>
       </div>
     </form>
   </div>
   </div>
 </section>
 <!-- contact section ends -->
-
 
 <!-- footer section starts -->
 <section class="footer">
@@ -361,14 +359,29 @@
 <!-- scroll reveal anim -->
 <script src="https://unpkg.com/scrollreveal"></script>
 
-<script
+<!-- <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"
-    ></script>
+    ></script> -->
 
 <!-- ==== ALL MAJOR JAVASCRIPT CDNS ENDS ==== -->
 
 <script src="./assets/js/script.js"></script>
+</script>
+
+<script>
+const scriptURL = 'https://script.google.com/macros/s/AKfycbynDTe6hVJBmUpU-Bb6eGk8mXY0TDyUkagxmJ4Le65UD5q7bsNkDspBz0GwULhHtxfn/exec'
+
+const form = document.forms['contact-form']
+
+form.addEventListener('submit', e => {
+  e.preventDefault()
+  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+  .then(response => alert("Thank you! your form is submitted successfully." ))
+  .then(() => { window.location.reload(); })
+  .catch(error => console.error('Error!', error.message))
+})
+</script>
 
 </body>
 </html>
